@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>Eat-The-Burger</h1>
+        <h3>Click a button to eat a burger or add a new one yourself!</h3>
+    </div>
+
+
+<div class="row">
+    <div class="col-8">
+<input class="form-control my-4" placeholder="Enter new burger name here" type="text" name="burger_name" id="submitNewBurgerInput">
+</div>
+<div class="col-4">
+<button class="btn w-100 my-4 btn-info" id="submitNewBurgerBtn">Submit</button>
+</div>
+</div>
+<div class="row">
+<ul class="list-grpup col-6">
+    {{#each burgers}}
+    {{#unless devoured}}
+    
+        <li  class="list-group-item">
+            {{burger_name}}
+            <button class="btn btn-success eatBurgerBtn" value={{id}}>X</button>
+        </li>
+    {{/unless}}
+    {{/each}}
+</ul>
+
+
+
+
+<ul class="list-grpup col-6 justify-content-end">
+    {{#each burgers}}
+    {{#if devoured}}
+    
+        <li  class="list-group-item d-flex justify-content-end strike">
+            <del>{{burger_name}}</del>
+        </li>
+    {{/if}}
+    {{/each}}
+</ul>
+
+</div>
+</div>
