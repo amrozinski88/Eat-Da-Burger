@@ -1,15 +1,20 @@
 const dotenv = require("dotenv").config()
 const mysql = require("mysql");
-const connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: process.env.SQL_PW,
-    database: "burgers_Db"
-  });
+const env = process.env.NODE_ENV || "development";
+const config = require("./config.json")[env]
+console.log(config)
 
+let connection = mysql.createConnection({
+  host: config.host,
+  port: config.port,
+  user: config.username,
+  password: process.env.SQL_PW,
+  database: config.database
+});
 
-
+if(env ==="production"){
+  connection = mysql.createConnection(config)
+}
   connection.connect(function(err) {
     if (err) {
       console.error("error connecting: " + err.stack);
