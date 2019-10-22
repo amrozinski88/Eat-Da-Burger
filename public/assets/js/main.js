@@ -3,7 +3,6 @@
 $(".eatBurgerBtn").on("click",event=>{
     console.log(event);
     const id = event.target.value;
-    
     console.log(id);
     $.ajax("/api/updateOne",{
         method: "PUT",
@@ -13,6 +12,10 @@ $(".eatBurgerBtn").on("click",event=>{
     });
 });
 
+function playAudio(url) {
+    var a = new Audio(url);
+    a.play();
+  }
 
 $("#submitNewBurgerBtn").on("click",()=>{
     const newBurgerName = $("#submitNewBurgerInput").val().trim()
