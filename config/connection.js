@@ -13,7 +13,7 @@ let connection = mysql.createConnection({
 });
 
 if(env ==="production"){
-  connection = mysql.createConnection(config)
+  connection = mysql.createConnection(process.env[config.use_env_variable])
 }
   connection.connect(function(err) {
     if (err) {
